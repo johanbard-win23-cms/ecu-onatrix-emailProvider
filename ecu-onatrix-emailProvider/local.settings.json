@@ -1,0 +1,10 @@
+{
+    "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+    "ServiceBusConnection": "Endpoint=sb://sb-jb-onatrix.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=6p5CMXAEUzqN4vrTXyDrSSGdgP8p3PQKa+ASbDCxX6Q=",
+    "CommunicationServices": "endpoint=https://cs-jb-onatrix.europe.communication.azure.com/;accesskey=7rtCPgxQcwWnTogdaJhCU5B6X7lCpsDWVVfKtkuP6nFYLx1RKgmuJQQJ99AIACULyCpq7IbPAAAAAZCSODkr",
+    "SenderAddress": "DoNotReply@c396f34c-b32d-409c-94c4-a24547edbb0b.azurecomm.net"
+  }
+}
