@@ -41,7 +41,7 @@ public class EmailSender(ILogger<EmailSender> logger, EmailClient emailClient)
         try
         {
             var emailRequest = JsonConvert.DeserializeObject<EmailRequest>(message.Body.ToString());
-            if (emailRequest != null) 
+            if (emailRequest != null && emailRequest.To != null && emailRequest.Subject != null) 
                 return emailRequest;
         }
         catch (Exception ex)
