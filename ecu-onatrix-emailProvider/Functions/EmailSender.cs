@@ -24,11 +24,15 @@ public class EmailSender(ILogger<EmailSender> logger, EmailClient emailClient)
             var emailRequest = UnpackEmailRequest(message);
             if (emailRequest != null && !string.IsNullOrEmpty(emailRequest.To))
             {
-                if(SendEmail(emailRequest))
-                {
+                if (SendEmail(emailRequest))
                     await messageActions.CompleteMessageAsync(message);
-                }
-            }    
+                else
+                    _logger.LogError($"ERROR : EmailSender.Run :: Email not sent, SendEmail returned false");
+            }
+            else
+            {
+                _logger.LogError($"ERROR : EmailSender.Run :: Email not sent, emailRequest not satisfactory");
+            }
         }
         catch (Exception ex)
         {
@@ -41,7 +45,7 @@ public class EmailSender(ILogger<EmailSender> logger, EmailClient emailClient)
         try
         {
             var emailRequest = JsonConvert.DeserializeObject<EmailRequest>(message.Body.ToString());
-            if (emailRequest != null && emailRequest.To != null && emailRequest.Subject != null) 
+            if (emailRequest != null && emailRequest.To != null && emailRequest.Subject != null && emailRequest.HtmlContent != null && emailRequest.PlainTextContent != null) 
                 return emailRequest;
         }
         catch (Exception ex)
